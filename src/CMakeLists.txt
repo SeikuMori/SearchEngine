@@ -11,19 +11,12 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(json)
 
-target_include_directories(search_engine PRIVATE ${PROJECT_SOURCE_DIR}/includes)
-
 add_executable(search_engine
-    main.cpp
-    includes/ConverterJSON.h
-    includes/InvertedIndex.h
-    includes/SearchServer.h
-    src/ConverterJSON.cpp
-    src/InvertedIndex.cpp
-    src/SearchServer.cpp
+    Main.cpp
+    ConverterJSON.cpp
+    InvertedIndex.cpp
+    SearchServer.cpp
 )
 
+target_include_directories(search_engine PRIVATE ${CMAKE_SOURCE_DIR}/include)
 target_link_libraries(search_engine PRIVATE nlohmann_json::nlohmann_json)
-
-enable_testing()
-add_subdirectory(tests)
